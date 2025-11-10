@@ -1,0 +1,303 @@
+---
+const title = 'MEN IN BLACK // Scanner 1997';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>MenInBlack Scanner</title>
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%2300e5ff'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-size='28' font-family='monospace' fill='black'%3EM%3C/text%3E%3C/svg%3E" />
+		<link rel="stylesheet" href="/styles/retro.css" />
+		<meta name="robots" content="noindex" />
+	</head>
+	<body>
+		<div class="crt-glow"></div>
+		<div class="desktop">
+			<div class="window">
+				<div class="titlebar">
+					<div class="brand">
+						<span class="led"></span>
+						<span class="caption">{title}</span>
+					</div>
+					<div>v1.0</div>
+				</div>
+				<div class="content">
+					<div class="panel">
+						<form id="scannerForm">
+							<fieldset>
+								<legend>Scanner Settings</legend>
+								<label for="speciesSelect">Species:</label>
+								<select id="speciesSelect">
+									<option value="">— select a species —</option>
+								</select>
+								<label for="nameInput" style="margin-top:8px;">Name (optional):</label>
+								<input type="text" id="nameInput" placeholder="e.g., Edgar, Boris..." />
+								<hr style="margin:10px 0;border:none;border-top:1px dashed #888;">
+								<label for="sizeInput">Size/Height contains:</label>
+								<input type="text" id="sizeInput" placeholder="e.g., Giant, 13 feet, human..." />
+								<label for="habitatInput" style="margin-top:8px;">Earth habitat contains:</label>
+								<input type="text" id="habitatInput" placeholder="e.g., New York, subway, exosuit..." />
+								<label for="ageInput" style="margin-top:8px;">Age contains:</label>
+								<input type="text" id="ageInput" placeholder="e.g., Unknown, 43 years..." />
+								<label for="weightInput" style="margin-top:8px;">Weight contains:</label>
+								<input type="text" id="weightInput" placeholder="e.g., Unknown..." />
+								<label for="notesInput" style="margin-top:8px;">Notes contain:</label>
+								<input type="text" id="notesInput" placeholder="e.g., shape-shifting, coffee, Arcnet..." />
+								<div style="margin-top:8px; display:flex; align-items:center; gap:8px;">
+									<input type="checkbox" id="onlyDanger" />
+									<label for="onlyDanger" style="margin:0;">Only dangerous</label>
+								</div>
+								<div style="margin-top:10px; display:flex; gap:8px;">
+									<button type="submit">Scan</button>
+									<button type="button" id="resetBtn">Reset</button>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div class="result">
+						<div id="dangerOverlay" class="danger-overlay" aria-live="assertive" aria-hidden="true">
+							<div class="warning">!!! DANGER !!!</div>
+							<div class="sub">Threat Level: HIGH — MIB Protocol Engaged</div>
+							<button type="button" id="closeDangerBtn">Close Warning</button>
+							<div class="scanline"></div>
+						</div>
+						<div id="resultArea" class="card" hidden>
+							<h3 id="alienTitle">Alien</h3>
+							<div class="meta">
+								<div><strong>Species:</strong> <span id="fieldSpecies"></span></div>
+								<div><strong>Earth Compatibility:</strong> <span id="fieldEarth"></span></div>
+								<div><strong>Size/Height:</strong> <span id="fieldSize"></span></div>
+								<div><strong>Danger:</strong> <span id="fieldDanger"></span></div>
+							</div>
+							<div class="notes">
+								<strong>Notes:</strong>
+								<ul id="notesList"></ul>
+							</div>
+							<div id="photoWrap" style="margin-top:12px; text-align:center;" aria-live="polite">
+								<img id="alienPhoto" alt="" style="max-width:100%; height:auto; image-rendering:pixelated; border:1px solid #222; background:#000;" hidden />
+							</div>
+						</div>
+						<div id="emptyState" style="opacity:.8;">Adjust filters and click “Scan”.</div>
+					</div>
+				</div>
+				<div class="statusbar">
+					<span>Mode: Static</span>
+					<span>Source: /data/aliens.json</span>
+					<span>Style: Win95 + BTTF + MIB</span>
+				</div>
+			</div>
+		</div>
+
+		<script type="module">
+			const speciesSelect = document.getElementById('speciesSelect');
+			const nameInput = document.getElementById('nameInput');
+			const form = document.getElementById('scannerForm');
+			const resetBtn = document.getElementById('resetBtn');
+
+			const resultArea = document.getElementById('resultArea');
+			const alienTitle = document.getElementById('alienTitle');
+			const fieldSpecies = document.getElementById('fieldSpecies');
+			const fieldEarth = document.getElementById('fieldEarth');
+			const fieldSize = document.getElementById('fieldSize');
+			const fieldDanger = document.getElementById('fieldDanger');
+			const notesList = document.getElementById('notesList');
+			const emptyState = document.getElementById('emptyState');
+			const dangerOverlay = document.getElementById('dangerOverlay');
+			const closeDangerBtn = document.getElementById('closeDangerBtn');
+			const sizeInput = document.getElementById('sizeInput');
+			const habitatInput = document.getElementById('habitatInput');
+			const ageInput = document.getElementById('ageInput');
+			const weightInput = document.getElementById('weightInput');
+			const notesInput = document.getElementById('notesInput');
+			const onlyDanger = document.getElementById('onlyDanger');
+			const alienPhoto = document.getElementById('alienPhoto');
+
+			/** Determine Earth compatibility from text (contains 'Yes') */
+			function isEarthCompatible(earthText) {
+				if (typeof earthText !== 'string') return false;
+				return earthText.toLowerCase().includes('yes');
+			}
+
+			/** Whether we should trigger big warning:
+			 *  - boolean true
+			 *  - or string that contains the word "true" (case-insensitive), e.g., "True.", "Extreme True."
+			 */
+			function isDangerousTrue(value) {
+				if (typeof value === 'boolean') return value === true;
+				if (typeof value === 'string') return /\btrue\b/i.test(value);
+				return false;
+			}
+
+			function includesText(haystack, needle) {
+				if (!needle) return true;
+				if (haystack == null) return false;
+				return String(haystack).toLowerCase().includes(needle.toLowerCase());
+			}
+
+			function matchesFullText(alien, query) {
+				if (!query) return true;
+				const fields = [
+					alien.name,
+					alien.species,
+					alien.size_or_height,
+					alien.earth_habitat,
+					alien.age,
+					alien.weight,
+					Array.isArray(alien.special_notes) ? alien.special_notes.join(' ') : ''
+				];
+				const q = query.toLowerCase();
+				return fields.some(f => (f || '').toLowerCase().includes(q));
+			}
+
+			function filterAliens(aliens, criteria) {
+				let list = aliens.slice();
+
+				if (criteria.onlyDanger === true) {
+					list = list.filter(a => isDangerousTrue(a.dangerous));
+				}
+
+				if (criteria.species) {
+					const s = criteria.species.toLowerCase();
+					list = list.filter(a => (a.species || '').toLowerCase() === s);
+				}
+
+				if (criteria.name) {
+					if (!criteria.species) {
+						list = list.filter(a => matchesFullText(a, criteria.name));
+					} else {
+						const n = criteria.name.toLowerCase();
+						list = list.filter(a => (a.name || '').toLowerCase().includes(n));
+					}
+				}
+
+				if (criteria.size) {
+					list = list.filter(a => includesText(a.size_or_height, criteria.size));
+				}
+				if (criteria.habitat) {
+					list = list.filter(a => includesText(a.earth_habitat, criteria.habitat));
+				}
+				if (criteria.age) {
+					list = list.filter(a => includesText(a.age, criteria.age));
+				}
+				if (criteria.weight) {
+					list = list.filter(a => includesText(a.weight, criteria.weight));
+				}
+				if (criteria.notes) {
+					const q = criteria.notes.toLowerCase();
+					list = list.filter(a => {
+						const joined = Array.isArray(a.special_notes) ? a.special_notes.join(' ').toLowerCase() : '';
+						return joined.includes(q);
+					});
+				}
+
+				return list;
+			}
+			/** Render card for the given alien */
+			function renderAlien(alien) {
+				alienTitle.textContent = `${alien.name} — Identity Record`;
+				fieldSpecies.textContent = alien.species ?? 'Unknown';
+				fieldSize.textContent = alien.size_or_height ?? 'Unknown';
+				fieldEarth.textContent = isEarthCompatible(alien.earth_habitat) ? 'Compatible' : 'Incompatible/Unconfirmed';
+				fieldDanger.textContent = (typeof alien.dangerous === 'boolean') ? (alien.dangerous ? 'True' : 'False') : String(alien.dangerous);
+
+				notesList.innerHTML = '';
+				(Array.isArray(alien.special_notes) ? alien.special_notes : []).forEach(n => {
+					const li = document.createElement('li');
+					li.textContent = n;
+					notesList.appendChild(li);
+				});
+
+				// Render photo if provided
+				const photoPath = alien.photo || '';
+				if (photoPath) {
+					alienPhoto.src = photoPath.startsWith('/') ? photoPath : `/${photoPath}`;
+					alienPhoto.alt = `${alien.name} photo`;
+					alienPhoto.hidden = false;
+				} else {
+					alienPhoto.hidden = true;
+					alienPhoto.removeAttribute('src');
+					alienPhoto.alt = '';
+				}
+
+				const warn = isDangerousTrue(alien.dangerous);
+				dangerOverlay.classList.toggle('show', warn);
+				dangerOverlay.setAttribute('aria-hidden', warn ? 'false' : 'true');
+
+				emptyState.hidden = true;
+				resultArea.hidden = false;
+			}
+
+			/** Find alien by species and optional name (contains match, case-insensitive) */
+			function findAlien(aliens, species, name) {
+				const matchesSpecies = aliens.filter(a => (a.species || '').toLowerCase() === species.toLowerCase());
+				if (!name) return matchesSpecies[0] || null;
+				const byName = matchesSpecies.find(a => (a.name || '').toLowerCase().includes(name.toLowerCase()));
+				return byName || matchesSpecies[0] || null;
+			}
+
+			/** Populate species dropdown with unique species */
+			function populateSpecies(aliens) {
+				const unique = Array.from(new Set(aliens.map(a => a.species).filter(Boolean))).sort((a, b) => a.localeCompare(b));
+				for (const s of unique) {
+					const opt = document.createElement('option');
+					opt.value = s;
+					opt.textContent = s;
+					speciesSelect.appendChild(opt);
+				}
+			}
+
+			let db = { aliens: [] };
+			async function load() {
+				try {
+					const res = await fetch('/data/aliens.json', { cache: 'force-cache' });
+					db = await res.json();
+					populateSpecies(db.aliens || []);
+				} catch (e) {
+					console.error('Failed to load aliens.json', e);
+				}
+			}
+			await load();
+
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+				const criteria = {
+					species: speciesSelect.value || '',
+					name: nameInput.value.trim(),
+					size: sizeInput.value.trim(),
+					habitat: habitatInput.value.trim(),
+					age: ageInput.value.trim(),
+					weight: weightInput.value.trim(),
+					notes: notesInput.value.trim(),
+					onlyDanger: !!onlyDanger.checked
+				};
+				const results = filterAliens(db.aliens || [], criteria);
+				const alien = results[0] || null;
+				if (!alien) {
+					resultArea.hidden = true;
+					emptyState.hidden = false;
+					emptyState.textContent = 'No result for the provided filters.';
+					dangerOverlay.classList.remove('show');
+					return;
+				}
+				renderAlien(alien);
+			});
+
+			resetBtn.addEventListener('click', () => {
+				form.reset();
+				resultArea.hidden = true;
+				emptyState.hidden = false;
+				emptyState.textContent = 'Adjust filters and click “Scan”.';
+				dangerOverlay.classList.remove('show');
+			});
+
+			closeDangerBtn?.addEventListener('click', () => {
+				dangerOverlay.classList.remove('show');
+				dangerOverlay.setAttribute('aria-hidden', 'true');
+			});
+		</script>
+	</body>
+	</html>
+
+

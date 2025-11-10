@@ -1,0 +1,21 @@
+# Dependencies and build output
+node_modules
+dist
+
+# VCS and OS noise
+.git
+.gitignore
+.DS_Store
+
+# Env and logs
+.env
+.env.*
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor/project files
+.vscode
+.idea
+
+

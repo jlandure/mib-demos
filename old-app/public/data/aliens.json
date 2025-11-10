@@ -1,0 +1,371 @@
+{
+  "aliens": [
+    {
+      "name": "Edgar the Bug",
+      "species": "Unknown extraterrestrial/Bug",
+      "dangerous": true,
+      "size_or_height": "13 feet long (Towering height)",
+      "earth_habitat": "Yes, disguised by wearing the skin of an abusive farmer named Edgar",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/edgar-the-bug.jpg",
+      "special_notes": [
+        "Main antagonist in the first Men in Black film.",
+        "Resembles a cockroach, praying mantis, cricket, grasshopper, and hornet.",
+        "Driven by a deep hatred for the killing of insects.",
+        "Seeks the Arquilian Galaxy.",
+        "Abilities include heightened intellect, super strength, super flexibility, wall crawling, super leaping, vocal camouflage, and slime secretion."
+      ]
+    },
+    {
+      "name": "Boris The Animal",
+      "species": "Baglodite. Last surviving member of the race.",
+      "dangerous": true,
+      "size_or_height": "Unknown",
+      "earth_habitat": "Yes. Was sent to Earth in the 1960s.",
+      "age": "Was imprisoned for 43 years",
+      "weight": "Unknown",
+      "photo": "/images/boris-the-animal.jpg",
+      "special_notes": [
+        "Intergalactic criminal and main antagonist in Men in Black 3.",
+        "Ruthless, violent, cunning, and intolerant of failure.",
+        "His planet, Bagladeshia, is 20 light years away from Earth.",
+        "Accompanied by a small insect-like pet called \"the Weasel\" which provides lethal spikes.",
+        "Imprisoned in Lunar Max prison."
+      ]
+    },
+    {
+      "name": "The Worms",
+      "species": "Annelids",
+      "dangerous": "False. Tend to panic and cry out rather than fight.",
+      "size_or_height": "Short creatures",
+      "earth_habitat": "Yes. They moved into an apartment in New York and can be found in break rooms and coffee houses.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/the-worms.jpg",
+      "special_notes": [
+        "Provide comic relief.",
+        "Have a strong affinity for coffee, which is considered a Noble's drink among them.",
+        "Physically, they have two primary arms, six tiny arms on their chest, antennas, and three-toed feet.",
+        "Might have the ability to regenerate, as they are spineless."
+      ]
+    },
+    {
+      "name": "Serleena",
+      "species": "Kylothian operative",
+      "dangerous": "True. Ruthless and devours those who cross her path.",
+      "size_or_height": "Shape-shifting (Appears as a human model, initially a serpent).",
+      "earth_habitat": "Yes. Arrived in New York seeking the Light of Zartha.",
+      "age": "Spent years searching for the Light of Zartha",
+      "weight": "Unknown",
+      "photo": "/images/serleena.jpg",
+      "special_notes": [
+        "Main antagonist in Men in Black 2.",
+        "Engaged in a long-standing war with the Zarthans.",
+        "Abilities include shape-shifting. She infiltrated MIB headquarters."
+      ]
+    },
+    {
+      "name": "Arquillians (Arkhilians)",
+      "species": "Arquillian (Arkhilian)",
+      "dangerous": "False. Key allies to MIB.",
+      "size_or_height": "Small humanoid aliens",
+      "earth_habitat": "Yes, they can hide within human-like exosuits.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/arquillians-arkhilians.jpg",
+      "special_notes": [
+        "Known for their large heads and eyes.",
+        "Guardians of the Arquilian Galaxy, which is a small sphere.",
+        "Possess advanced technology and knowledge."
+      ]
+    },
+    {
+      "name": "C-18 Locker Aliens",
+      "species": "Unidentified (Super Dwarfy Beings)",
+      "dangerous": "False. Described as innocent and gullible.",
+      "size_or_height": "Tiny humanoid creatures (Pocket-sized)",
+      "earth_habitat": "Yes, hidden within Locker C-18.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/c-18-locker-aliens.jpg",
+      "special_notes": [
+        "Covered with brown fur, big eyes, and antennas that glow like a bioluminescent disco.",
+        "Have a habit of collective chanting/synchronized harmonies.",
+        "They worship everyday objects."
+      ]
+    },
+    {
+      "name": "Frank the Pug",
+      "species": "Remoulian",
+      "dangerous": "False. Described as a troublemaker with a heart of gold.",
+      "size_or_height": "Small (Pug appearance)",
+      "earth_habitat": "Yes, cleverly disguised as a pug to blend in on Earth.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/frank-the-pug.png",
+      "special_notes": [
+        "A talking dog.",
+        "Worked as Agent J's partner in the second movie.",
+        "Gave crucial information about the Arquilian Galaxy in the first film."
+      ]
+    },
+    {
+      "name": "Ballchinian",
+      "species": "Ballchinian",
+      "dangerous": "True (Adversary of MIB, recruited by Serleena).",
+      "size_or_height": "Overall human-like appearance.",
+      "earth_habitat": "Yes (Appears disguised as human).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/ballchinian.jpg",
+      "special_notes": [
+        "Possess an unconventional feature resembling a pair of testicles dangling from their chins.",
+        "While resilient to most attacks, their chin balls are their weak spot."
+      ]
+    },
+    {
+      "name": "Archanans",
+      "species": "Archanan",
+      "dangerous": "False. Wise beings. Griffin is the last known survivor.",
+      "size_or_height": "Unknown",
+      "earth_habitat": "Yes (The last survivor, Griffin, lives on Earth).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/archanans.png",
+      "special_notes": [
+        "Transcend the boundaries of three-dimensional existence.",
+        "Possess the ability to perceive an infinite array of alternate timelines and potential futures.",
+        "Their home planet, Ark, was destroyed by the Boglodites.",
+        "Griffin safeguarded the Arcnet Shield."
+      ]
+    },
+    {
+      "name": "Bicranials",
+      "species": "Bicranial (from planet Bicrania)",
+      "dangerous": "Unknown/Neutral.",
+      "size_or_height": "Significant resemblance to humans.",
+      "earth_habitat": "Yes (Can be mistaken for humans).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/bicranials.jpg",
+      "special_notes": [
+        "Possess a secondary head, smaller in size, emerging from a flexible neck extending from their backs.",
+        "The secondary head has independent consciousness but limited control over the body."
+      ]
+    },
+    {
+      "name": "Jara",
+      "species": "Crew Light species",
+      "dangerous": "True. Intergalactic criminal mastermind.",
+      "size_or_height": "True form is a micro-sized alien/miniature Flying Saucer.",
+      "earth_habitat": "Yes (Was captured and held at MIB HQ for over five years).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/jara.jpg",
+      "special_notes": [
+        "Secondary antagonist in MIB 2.",
+        "Highly intelligent, driven by power and wealth.",
+        "Plotted to rob Earth's ozone layer.",
+        "Uses deceptive tactics, hiding many clones beneath his coat."
+      ]
+    },
+    {
+      "name": "Jeff",
+      "species": "Giant worm-like alien",
+      "dangerous": "True. Wreaks havoc in the subway system.",
+      "size_or_height": "Giant",
+      "earth_habitat": "Yes (Lives in the subway).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/jeff.jpg",
+      "special_notes": [
+        "Has a flower on his head which, when tampered with, provokes him.",
+        "Died after his body was used as a host by the villain Serleena."
+      ]
+    },
+    {
+      "name": "Jack Jeeves",
+      "species": "Skooks",
+      "dangerous": "Ambiguous. Known for shady dealings and illegal trade of alien technology/weapons.",
+      "size_or_height": "Resembles humans",
+      "earth_habitat": "Yes, poses as a pawn shop owner.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/jack-jeeves.jpg",
+      "special_notes": [
+        "Has green blood.",
+        "Unique ability: can regenerate his head after it is shot off, though the regenerated head never looks the same.",
+        "Valuable resource for Agents K and J."
+      ]
+    },
+    {
+      "name": "Bivoids",
+      "species": "Bivoid (from planet Bivoida)",
+      "dangerous": "Unknown/Neutral. Their home planet was destroyed by the Boglodites.",
+      "size_or_height": "Humanoid",
+      "earth_habitat": "Yes (Resembles humans).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/bivoids.jpg",
+      "special_notes": [
+        "Share a striking resemblance to humans, but have an unusually large skull and purple colored blood."
+      ]
+    },
+    {
+      "name": "Cephaloids",
+      "species": "Cephaloid",
+      "dangerous": "True. Threatening adversaries due to enhanced speed and stamina.",
+      "size_or_height": "Assumes a human form.",
+      "earth_habitat": "Yes, can assume human form on Earth.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/cephaloids.jpg",
+      "special_notes": [
+        "True appearance unknown, but traits suggest a potential aquatic or fish-like nature (pulsating eyes and ability to breathe through gills).",
+        "Known for impressive leaping abilities."
+      ]
+    },
+    {
+      "name": "Post Office Aliens",
+      "species": "Unidentified humanoid race",
+      "dangerous": "False.",
+      "size_or_height": "Humanoid",
+      "earth_habitat": "Yes, disguised as a letter sorting machine in Massachusetts.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/post-office-aliens.png",
+      "special_notes": [
+        "Peach-skinned beings with **eight arms**.",
+        "Possess exceptional speed and coordination, performing multiple tasks simultaneously."
+      ]
+    },
+    {
+      "name": "Zarthans",
+      "species": "Zarthan (from planet Zartha)",
+      "dangerous": "False. Protective of their homeworld.",
+      "size_or_height": "Assumes a human guise.",
+      "earth_habitat": "Yes, can assume human guise.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/zarthans.png",
+      "special_notes": [
+        "True appearance remains undisclosed.",
+        "Possess the \"Light of Zartha,\" a powerful protective entity for their planet."
+      ]
+    },
+    {
+      "name": "Mikey",
+      "species": "Samorian alien",
+      "dangerous": "True. Escaped from prison and exhibited aggression.",
+      "size_or_height": "Humanoid",
+      "earth_habitat": "Yes, attempted to disguise himself as an immigrant.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/mikey.png",
+      "special_notes": [
+        "Appearance resembles a humanoid combination of a bullfrog and a crocodile.",
+        "Features include a shell-like structure, six small arms, and an elongated face with extendable shark-like jaws."
+      ]
+    },
+    {
+      "name": "The Hive",
+      "species": "Parasitic race",
+      "dangerous": "Extreme True. Their specialty is invading planets and merging with DNA to devour worlds.",
+      "size_or_height": "Unknown",
+      "earth_habitat": "Attempted invasion in 2016 (failed). Can possess other species (e.g., High T).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/the-hive.jpg",
+      "special_notes": [
+        "Their attempted invasion used the Eiffel Tower's Wormhole."
+      ]
+    },
+    {
+      "name": "Pawny",
+      "species": "Unidentified (Species governed by a monarchy)",
+      "dangerous": "False. Loyal friend and protector to Agent M.",
+      "size_or_height": "Small in size, resembles pawn pieces.",
+      "earth_habitat": "Yes (Serves Agent M on Earth).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/pawny.jpg",
+      "special_notes": [
+        "Charismatic, eccentric, and serves as comic relief.",
+        "Wears weird armor which he utilizes as a protective shell."
+      ]
+    },
+    {
+      "name": "The Twins",
+      "species": "Diad (Extinct, wiped out by The Hive).",
+      "dangerous": "Ambiguous. Initially perceived as a threat (assassinated Fungus), but their goal was noble (to destroy The Hive).",
+      "size_or_height": "Unknown",
+      "earth_habitat": "Yes (Appeared in London and on Reza stavrosa's Island).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/the-twins.jpg",
+      "special_notes": [
+        "Highly intelligent and near invulnerable.",
+        "Unique ability to transform between **solid, liquid, and gas forms**."
+      ]
+    },
+    {
+      "name": "Mr. Wu",
+      "species": "Slug-like alien",
+      "dangerous": "Ambiguous. Involved in illegal activities (unlicensed fish, health violations, associated with assassins).",
+      "size_or_height": "Unknown",
+      "earth_habitat": "Yes, owned a Chinese restaurant.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/mr-wu.jpg",
+      "special_notes": [
+        "Attempted to deceive Agents K and J with a fake accent.",
+        "His ultimate fate is uncertain due to the alteration of the 1969 timeline."
+      ]
+    },
+    {
+      "name": "White Brain Guy",
+      "species": "Unknown",
+      "dangerous": "Unknown.",
+      "size_or_height": "Unknown",
+      "earth_habitat": "Yes, visited Earth.",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/white-brain-guy.jpg",
+      "special_notes": [
+        "Most striking feature is its unique appearance: a floating brain enclosed in a transparent dome.",
+        "Mysterious character."
+      ]
+    },
+    {
+      "name": "Stalk Eyes",
+      "species": "Unknown",
+      "dangerous": "True. Criminal who crossed paths and confronted MIB agents.",
+      "size_or_height": "Unknown",
+      "earth_habitat": "Yes (Encountered at Wu's restaurant).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/stalk-eyes.jpg",
+      "special_notes": [
+        "Appearance resembles a combination of a lobster and a reptile.",
+        "Distinguishing feature: a set of large **stalk-like eyes**."
+      ]
+    },
+    {
+      "name": "Dog Poop",
+      "species": "Unidentified humanoid",
+      "dangerous": "True (Adversary of MIB, neutralized by Agent K).",
+      "size_or_height": "Humanoid",
+      "earth_habitat": "Yes (Appeared on Earth seeking K).",
+      "age": "Unknown",
+      "weight": "Unknown",
+      "photo": "/images/dog-poop.png",
+      "special_notes": [
+        "Distinct appearance that resembles a canine organic byproduct.",
+        "Has leathery skin and a prominent black nose."
+      ]
+    }
+  ]
+}
+
+
