@@ -1,11 +1,11 @@
 # MIB Alien Scanner App
 
-App Vue.js "hyper moderne" pour scanner les aliens via l'agent BodySafety.
+Hyper-modern Vue.js app to scan aliens via the BodySafety agent.
 
-## Prérequis
+## Prerequisites
 
 - Node.js & npm
-- L'agent BodySafety qui tourne (localement ou déployé)
+- BodySafety agent running (locally or deployed)
 
 ## Installation
 
@@ -16,25 +16,41 @@ npm install
 
 ## Configuration
 
-Si l'agent est déployé sur Google Cloud Agent Engine ou ailleurs, modifiez l'URL de l'API dans le code (`src/App.vue`) ou créez un fichier `.env.local` :
+If the agent is deployed on Google Cloud Agent Engine or elsewhere, update the API URL in the code (`src/App.vue`) or create a `.env.local` file:
 
 ```
-VITE_AGENT_URL=https://votre-agent-url/chat
+VITE_AGENT_URL=https://your-agent-url/chat
 ```
 
-Par défaut, l'application tape sur `http://localhost:8000/agent/chat` (via le proxy Vite pour le développement).
+By default, the app targets `http://localhost:8000/agent/chat` (via the Vite proxy in development).
 
-## Lancement
+## Run
 
 ```bash
 npm run dev
 ```
 
-L'application sera accessible sur `http://localhost:5173`.
+The app will be available at `http://localhost:5173`.
 
 ## Architecture
 
-- **App.vue** : Orchestrateur principal. Gère l'état (scan, chargement, résultat).
-- **CameraScanner.vue** : Gère l'accès caméra et la capture d'image.
-- **AgentResponse.vue** : Affiche la réponse Markdown de l'agent avec un style MIB.
-- **Tailwind CSS** : Utilisé pour le design "sexy" et réactif.
+- **App.vue**: Main orchestrator. Manages state (scan, loading, result).
+- **CameraScanner.vue**: Handles camera access and image capture.
+- **AgentResponse.vue**: Displays the agent's Markdown response with an MIB style.
+- **Tailwind CSS**: Used for the "sexy", responsive design.
+
+## Deployment (Cloud Run)
+
+The app can be deployed as a static (Nginx) container on Cloud Run.
+
+A deployment script is provided to make this easier:
+
+```bash
+./deploy_cloudrun.sh
+```
+
+This script:
+1. Builds the Docker image (Node.js build + Nginx server).
+2. Deploys to Cloud Run while injecting the backend agent URL via the `VITE_AGENT_URL` environment variable.
+
+> **Configuration note**: Because this is a static application, environment variables are injected at container startup into a `config.js` file that is loaded by the browser. This lets you change the API URL without rebuilding the image.

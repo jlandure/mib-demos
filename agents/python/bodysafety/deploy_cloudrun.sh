@@ -1,9 +1,9 @@
 # Build & Deploy Script for MIB Agent on Cloud Run
 
-# 0. Préparation des données (copie locale pour le build Docker context)
+# 0. Prepare data (local copy for Docker build context)
 echo "Preparing data..."
 
-# Récupération de la clé API
+# Load API key
 ENV_FILE="../../../.env"
 if [ -f "$ENV_FILE" ]; then
     echo "Loading secrets from $ENV_FILE..."
@@ -16,21 +16,21 @@ if [ -z "$GEMINI_API_KEY" ] && [ -z "$GOOGLE_API_KEY" ]; then
     exit 1
 fi
 
-# ADK utilise GOOGLE_API_KEY, donc on s'assure qu'elle est définie
+# ADK uses GOOGLE_API_KEY, so make sure it is set
 if [ -z "$GOOGLE_API_KEY" ]; then
     export GOOGLE_API_KEY="$GEMINI_API_KEY"
 fi
 
 mkdir -p data
-# On copie depuis la racine du projet mib-mcp/data vers le dossier courant data/
-# Attention au chemin relatif : le script est dans agents/python/bodysafety
+# Copy from the mib-mcp/data folder at the project root into the local data/ folder
+# Be careful with the relative path: the script lives in agents/python/bodysafety
 cp -r ../../../data/data.yaml data/
 
-# 1. Build de l'image
+# 1. Build the container image
 echo "Building container..."
 gcloud builds submit --tag gcr.io/jlandure-demos/mib-bodysafety-simple .
 
-# 2. Déploiement sur Cloud Run
+# 2. Deploy to Cloud Run
 echo "Deploying to Cloud Run..."
 gcloud run deploy mib-bodysafety-simple \
   --source . \

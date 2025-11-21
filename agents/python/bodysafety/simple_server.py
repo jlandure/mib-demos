@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from typing import Optional, List
 from google.genai import types
 
-# Import de l'agent
+# Import the agent
 from agent import root_agent
 
 app = FastAPI()
@@ -19,15 +19,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- CHARGEMENT DES DONNÉES (RAG STATIQUE) ---
+# --- LOAD DATA (STATIC RAG) ---
 ALIEN_DATA = ""
 try:
-    # On cherche data/data.yaml relative au script
+    # Look for data/data.yaml relative to this script
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    # Essayer plusieurs chemins possibles (local vs docker structure)
+    # Try several possible paths (local vs Docker structure)
     possible_paths = [
         os.path.join(current_dir, "data", "data.yaml"),
-        os.path.join(current_dir, "..", "data", "data.yaml"), # Cas local dev
+        os.path.join(current_dir, "..", "data", "data.yaml"), # Local dev case
         "data/data.yaml"
     ]
     
@@ -76,11 +76,11 @@ async def chat_endpoint(
             else:
                 final_contents.append(item)
 
-        # Injection des données dans l'instruction système
-        # On prend l'instruction originale de l'agent et on ajoute la DB
+        # Inject database into the system instruction
+        # Take the agent's original system instruction and append the DB
         full_instruction = root_agent.instruction + "\n\n=== MIB ALIEN DATABASE ===\n" + ALIEN_DATA
         
-        # Force l'utilisation des données fournies
+        # Force the model to use the provided data
         full_instruction += "\n\nIMPORTANT: USE the 'MIB ALIEN DATABASE' provided above to identify the alien. Do not use external tools."
 
         response = root_agent.model.api_client.models.generate_content(

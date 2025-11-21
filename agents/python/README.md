@@ -1,15 +1,15 @@
-# Le test en local
+# Local testing
 
 uv run adk web .
 
-# Le test sur Agent Engine
+# Testing on Agent Engine
 
 uv run adk chat agent_engine \
     --project=jlandure-demos \
     --region=europe-west1 \
     --agent="MIB Bodysafety Agent"
 
-# Le déploiement
+# Deployment
 
 uv run adk deploy agent_engine \
     --project=jlandure-demos \
@@ -18,9 +18,9 @@ uv run adk deploy agent_engine \
     --display_name="MIB Bodysafety Agent" \
     bodysafety
 
-# Déploiement Cloud Run (Simple Server)
+# Cloud Run deployment (simple server)
 
-Se placer dans le dossier `bodysafety` :
+From the `bodysafety` folder:
 
 ```bash
 cd bodysafety

@@ -15,8 +15,8 @@ COPY agent.py .
 COPY simple_server.py .
 
 # Copy data directory (Important!)
-# On suppose que le build se fait depuis le dossier bodysafety
-# Il faudra peut-être copier les données avant le build si elles sont ailleurs
+# We assume the build runs from the bodysafety folder
+# You may need to copy the data before the build if they live elsewhere
 COPY data/ data/
 
 CMD ["python", "simple_server.py"]
