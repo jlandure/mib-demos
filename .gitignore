@@ -94,3 +94,37 @@ tmp/
 temp/
 *.tmp
 
+# Agents (Python)
+# uv virtual environments
+agents/**/.venv/
+.venv/
+
+# Python cache and compiled files
+agents/**/__pycache__/
+agents/**/*.py[cod]
+agents/**/.mypy_cache/
+agents/**/.ruff_cache/
+agents/**/.pytest_cache/
+agents/**/.pytype/
+agents/**/.hypothesis/
+agents/**/.tox/
+agents/**/.cache/
+
+# Build artifacts
+agents/**/build/
+agents/**/dist/
+agents/**/.eggs/
+agents/**/*.egg-info/
+agents/**/pip-wheel-metadata/
+
+# Coverage reports
+agents/**/.coverage
+agents/**/.coverage.*
+agents/**/coverage.xml
+agents/**/htmlcov/
+
+# Development tools
+agents/**/.ipynb_checkpoints/
+agents/**/.nox/
+agents/**/.benchmarks/
+agents/**/.pyre/

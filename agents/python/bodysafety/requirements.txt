@@ -1,0 +1,7 @@
+google-adk
+pyyaml>=6.0
+fastapi
+uvicorn
+python-multipart
+google-genai
+

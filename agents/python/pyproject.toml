@@ -1,0 +1,12 @@
+[project]
+name = "mib-python-agents"
+version = "0.1.0"
+description = "Python agents for Men in Black project"
+requires-python = ">=3.11"
+dependencies = [
+    "google-adk",
+    "google-genai==1.52.0",
+    "python-dotenv>=1.2.1",
+    "pyyaml>=6.0",
+]
+

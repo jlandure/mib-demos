@@ -1,0 +1,19 @@
+# Ignore virtual environments
+venv/
+.venv/
+agents/venv-*/
+
+# Ignore old app
+old-app/
+
+# Ignore scripts
+scripts/
+
+# Ignore build artifacts
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+.DS_Store
+
